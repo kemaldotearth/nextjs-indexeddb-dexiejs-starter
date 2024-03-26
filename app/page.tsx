@@ -25,8 +25,8 @@ export default function Home() {
           handleAddUser(e);
         }}
       >
-        <input type="text" name="username" placeholder="Username" />
-        <input type="email" name="email" placeholder="Email" />
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="email" name="email" placeholder="Email" required />
         <button type="submit">Add User</button>
       </form>
 
