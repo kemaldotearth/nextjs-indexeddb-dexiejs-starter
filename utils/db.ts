@@ -12,7 +12,7 @@ export class DB extends Dexie {
   constructor() {
     super('app-db');
     this.version(1).stores({
-      users: '++id, name, email',
+      users: '++id, username, email',
     });
   }
 }
