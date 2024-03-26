@@ -3,7 +3,7 @@
 import { useStore } from '@/hooks/useStore';
 
 export default function Home() {
-  const { addUser, getAllUsers } = useStore();
+  const { addUser, getAllUsers, allUserCount } = useStore();
 
   const handleAddUser = async (e: React.SyntheticEvent) => {
     try {
@@ -16,8 +16,6 @@ export default function Home() {
       console.error(error);
     }
   };
-
-  console.log(getAllUsers);
 
   return (
     <main>
@@ -34,11 +32,23 @@ export default function Home() {
 
       <h2>Users</h2>
       <ul>
-        {getAllUsers?.map((user, i) => (
-          <li key={i}>
-            <strong>{user.username}</strong> - {user.email}
-          </li>
-        ))}
+        {getAllUsers === undefined ? (
+          <li>Loading...</li>
+        ) : (
+          <>
+            {allUserCount === 0 ? (
+              <li>No users found.</li>
+            ) : (
+              <>
+                {getAllUsers?.map((user, i) => (
+                  <li key={i}>
+                    <strong>{user.username}</strong> - {user.email}
+                  </li>
+                ))}
+              </>
+            )}
+          </>
+        )}
       </ul>
     </main>
   );

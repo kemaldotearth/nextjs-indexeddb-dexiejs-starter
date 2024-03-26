@@ -15,8 +15,13 @@ export const useStore = () => {
     return await db.users.toArray();
   });
 
+  const allUserCount = useLiveQuery(async () => {
+    return await db.users.count();
+  });
+
   return {
     addUser,
     getAllUsers,
+    allUserCount,
   };
 };
